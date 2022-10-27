@@ -9,12 +9,12 @@ const app = express();
 app.use( express.static('public') );
 
 // Rutas
-// app.get('/', (req, res) => {
-//   res.json({
-//     ok: true,
-//     hola: "mundo"
-//   })
-// })
+
+app.use( '/api/auth', require('./routes/auth') )
+
+// Todo:
+// auth: crear, login, renew
+// CRUD: eventos
 
 
 
