@@ -6,10 +6,24 @@
 const { Router } = require('express');
 const router = Router();
 
-router.get('/', (req, res) => {
+router.post('/new', (req, res) => {
   res.json({
     ok: true,
-    hola: "mundo"
+    msg: 'Registro'
+  })
+})
+
+router.post('/', (req, res) => {
+  res.json({
+    ok: true,
+    msg: 'Login'
+  })
+})
+
+router.get('/renew', (req, res) => {
+  res.json({
+    ok: true,
+    msg: 'Renew'
   })
 })
 
