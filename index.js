@@ -9,7 +9,7 @@ const app = express();
 app.use( express.static('public') );
 
 // Rutas
-
+// El primer parametro es la ruta y el segundo es lo que queremos que se muestre en esa ruta
 app.use( '/api/auth', require('./routes/auth') )
 
 // Todo:
