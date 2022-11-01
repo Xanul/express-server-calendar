@@ -8,6 +8,9 @@ const app = express();
 // Directorio publico
 app.use( express.static('public') );
 
+// Lectura y parseo del body
+app.use( express.json() )
+
 // Rutas
 // El primer parametro es la ruta y el segundo es lo que queremos que se muestre en esa ruta
 app.use( '/api/auth', require('./routes/auth') )

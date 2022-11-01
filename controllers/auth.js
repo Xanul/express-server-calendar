@@ -1,17 +1,48 @@
 // Se importa nuevamente la libreria para tener la ayuda de intellisense
-const { response } = require('express')
+const { response } = require('express');
+const { validationResult } = require('express-validator');
+
 
 const createUser = (req, res = response) => {
-  res.json({
+  
+  const errors = validationResult(req);
+  const { name, email, password } = req.body
+
+  // Manejo de errores
+ if ( !errors.isEmpty() ) {
+  return res.status(400).json({
+    ok: false,
+    errors: errors.mapped()
+  })
+ }
+
+  res.status(201).json({
     ok: true,
-    msg: 'Create User'
+    msg: 'Create User',
+    name,
+    email,
+    password
   })
 }
 
 const userLogin = (req, res = response) => {
-  res.json({
+  
+  const { email, password } = req.body
+  const errors = validationResult(req);
+  
+  // Manejo de errores
+  if ( !errors.isEmpty() ) {
+    return res.status(400).json({
+      ok: false,
+      errors: errors.mapped()
+    })
+  }
+
+  res.status(200).json({
     ok: true,
-    msg: 'User Login'
+    msg: 'User Login',
+    email,
+    password
   })
 }
 
