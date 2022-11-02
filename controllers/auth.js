@@ -6,7 +6,7 @@ const { generateJWT } = require('../helpers/jwt');
 
 
 const createUser = async (req, res = response) => {
-  
+
   const { email, password } = req.body;
 
   try {
@@ -92,12 +92,17 @@ const userLogin = async (req, res = response) => {
 
 }
 
+// Refrescar el token
+const tokenRenew = async(req, res = response) => {
 
+  const uid = req.uid;
+  const name = req.name;
 
-const tokenRenew = (req, res = response) => {
+  const token = await generateJWT(uid, name);
+
   res.json({
     ok: true,
-    msg: 'Token Renew'
+    token
   })
 }
 
