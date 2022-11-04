@@ -11,7 +11,7 @@ const app = express();
 dbConnection();
 
 //CORS
-app.use(cors())
+app.use(cors());
 
 // Directorio publico
 app.use( express.static('public') );
@@ -21,7 +21,8 @@ app.use( express.json() )
 
 // Rutas
 // El primer parametro es la ruta y el segundo es lo que queremos que se muestre en esa ruta
-app.use( '/api/auth', require('./routes/auth') )
+app.use( '/api/auth', require('./routes/auth') );
+app.use('/api/events', require('./routes/events'));
 
 // Todo:
 // auth: crear, login, renew
