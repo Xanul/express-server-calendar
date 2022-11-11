@@ -11,7 +11,6 @@ const isDate = ( value, { req, location, path } ) => {
 
   const fecha = moment( value );
   
-  console.log(fecha);
   
   if ( fecha.isValid() ) {
     return true;
