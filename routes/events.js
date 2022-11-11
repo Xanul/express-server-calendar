@@ -31,7 +31,16 @@ router.post(
   createEvent)
 
 // // Actualizar evento
-router.put('/:id', validateJWT, updateEvent)
+router.put(
+  '/:id', 
+  [
+    validateJWT,
+    check('title', 'The title is necessary').not().isEmpty(),
+    check('start', 'The start date is necessary').custom( isDate ),
+    check('end', 'The end date is necessary').custom( isDate ),
+    fieldValidation
+  ], 
+  updateEvent)
 
 // // Borrar evento
 router.delete('/:id', validateJWT, deleteEvent)
